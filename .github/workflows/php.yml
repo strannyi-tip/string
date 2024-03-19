@@ -2,9 +2,9 @@ name: codeception
 
 on:
   push:
-    branches: [ "release" ]
+    branches: [ "main", "release" ]
   pull_request:
-    branches: [ "release" ]
+    branches: [ "main", "release" ]
 
 permissions:
   contents: read
