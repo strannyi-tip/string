@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Pest
 
 on:
   push:
@@ -17,6 +17,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Config composer Pest
+      run: composer config --no-plugins allow-plugins.pestphp/pest-plugin true
+    
     - name: Require Pest
       run: composer require pestphp/pest --dev --with-all-dependencies
       
