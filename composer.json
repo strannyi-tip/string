@@ -3,7 +3,9 @@
     "description": "PHP String type helper",
     "type": "package",
     "require-dev": {
-        "codeception/codeception": "5.1.x-dev"
+        "codeception/codeception": "5.1.x-dev",
+        "codeception/module-phpbrowser": "*",
+        "codeception/module-asserts": "*"
     },
     "license": "GPL-3.0-or-later",
     "autoload": {
@@ -17,6 +19,5 @@
             "email": "0x00.dev@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "minimum-stability": "dev"
 }

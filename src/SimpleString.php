@@ -263,6 +263,16 @@ class SimpleString implements Stringable
     }
 
     /**
+     * Get source.
+     *
+     * @return string
+     */
+    public function get_source(): string
+    {
+        return $this->source;
+    }
+
+    /**
      * @inheritDoc
      */
     public function __toString(): string
