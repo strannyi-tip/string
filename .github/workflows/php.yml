@@ -25,6 +25,3 @@ jobs:
 
     - name: Run test suite
       run: vendor/bin/codecept run Unit
-
-    - name: Codeception coverage
-      run: XDEBUG_MODE=coverage vendor/bin/codecept run --coverage --coverage-xml
