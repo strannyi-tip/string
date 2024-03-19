@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Unit;
 
 use StrannyiTip\Helper\Type\SimpleString;
 
@@ -15,7 +15,7 @@ class SimpleStringTest extends \Codeception\Test\Unit
 
     public function testReplace()
     {
-        $this->assertEquals('will work for dream', (string)$this->string, 'Check for replace');
+        $this->assertEquals('will work for dream', (string)$this->string->replace('eat', 'dream'), 'Check for replace');
     }
 
     public function testGet_source()
@@ -46,13 +46,13 @@ class SimpleStringTest extends \Codeception\Test\Unit
             'work',
             'for',
             'eat'
-        ], $this->string->split(''), 'Check for empty split is worked');
+        ], $this->string->split(' '), 'Check for empty split is worked');
         $test_object = new SimpleString('one,two,three');
         $this->assertEquals([
             'one',
             'two',
             'three'
-        ], $this->string->split(','), 'Check for split is worked use delimiter');
+        ], $test_object->split(','), 'Check for split is worked use delimiter');
     }
 
     public function testPrepend()
@@ -63,14 +63,14 @@ class SimpleStringTest extends \Codeception\Test\Unit
 
     public function testReplace_regex()
     {
-        $this->assertEquals('want work for eat', (string)$this->string->replace_regex('|will|miu', function(string $match) {
-            return 'want';
+        $this->assertEquals('want work for eat', (string)$this->string->replace_regex('|will|miu', function($match) {
+            return \str_replace('will', 'want', $match[0]);
         }));
     }
 
     public function testClone()
     {
-        $this->assertObjectEquals($this->string, $this->string->clone(), 'Check for clone is equals source');
+        $this->assertEquals($this->string, $this->string->clone(),'Check for clone is equals source');
     }
 
     public function testAppend()
@@ -131,12 +131,16 @@ class SimpleStringTest extends \Codeception\Test\Unit
 
     public function testTo_array()
     {
+        $test_string = new SimpleString('help me');
         $this->assertEquals([
-            'will',
-            'work',
-            'for',
-            'eat'
-        ], $this->string->to_array());
+            'h',
+            'e',
+            'l',
+            'p',
+            ' ',
+            'm',
+            'e',
+        ], $test_string->to_array());
     }
 
     public function testContains()

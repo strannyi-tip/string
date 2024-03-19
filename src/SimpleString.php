@@ -225,7 +225,7 @@ class SimpleString implements Stringable
      *
      * @return array
      */
-    public function split(Stringable|string $delimiter = ''): array
+    public function split(Stringable|string $delimiter = ' '): array
     {
         return \explode($delimiter, $this->source);
     }
